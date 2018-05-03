@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/lib/aui.css" />
+    <link rel="stylesheet" href="./css/common.css">
+    <style media="screen">
+      #header{height: 50px;background: #fff;width: 100%;position: relative;box-sizing: content-box;}
+      .left{width: 60px;text-align: center;height: 50px;line-height: 50px;}
+      .aui-iconfont{font-weight: bolder;font-size: 0.85rem;}
+      .right{width: 60px;text-align: center;height: 50px;line-height: 50px;}
+      .title{text-align: center;height: 50px;line-height: 50px;font-size: 0.85rem;}
+    </style>
+</head>
+<body>
+  <div id="header" class="flex-wrap">
+    <div class="left" onclick="closeWin()">
+      <i class="aui-iconfont aui-icon-left"></i>
+    </div>
+    <div class="title flex-con">个人信息</div>
+    <div id="right-item" class="right" style="" tapmode="hover">
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/config.js"></script>
+<script type="text/javascript" src="./script/common.js"></script>
+<script type="text/javascript">
+    var extra={};
+    apiready = function(){
+        var header = $api.dom('#header');
+        //适配iOS 7+，Android 4.4+状态栏
+        $api.fixStatusBar(header);
+        $api.fixIos7Bar(header);
+        api.setStatusBarStyle({
+                    style : 'light',
+                    color:"#ff7b17"
+                });
+        var headerH = $api.offset(header).h;
+        extra   = api.pageParam; //IOS接受参数
+        platform  = extra['platform'] ;
+        if(platform=='ios'){
+           $api.setStorage('typeVc',extra['typeVc']);
+           plum_session 	= extra['plum_session'] ;
+        }else{
+            extra 	= JSON.parse(api.appParam); //安卓接收参数方式
+            plum_session 	= extra['session'] ;
+        }
+        // var frameConfig=SKIP_LINK[extra['type']];
+         var frameConfig=SKIP_LINK.companyAuthentication;
+        var link=frameConfig.name;
+        var title=frameConfig.title;
+        $api.html($api.dom('.title'),title);
+        api.openFrame({
+            name: link,
+            url: './html/frame-'+link+'.html',
+            rect: {
+                x: 0,
+                y:headerH,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+    };
+    // 设置右侧按钮组 图片
+    function setRightItemIcon(cfg){
+      var right=("right" in cfg) && cfg['right'] ? cfg['right'] : false;;
+      if(right){
+        $api.html($api.dom('.right'),right.text);
+        $api.addEvt($api.dom('.right'), 'click', function(){
+          api.sendEvent({
+              name: right.eventName,
+              extra: { }
+          });
+        })
+      }
+    }
+    /*
+     * 设置右侧按钮组 文字
+     */
+    function setRightItemText(cfg) {
+        var right 	= ("right" in cfg) && cfg['right'] ? cfg['right'] : false;
+        if(right){
+          $api.css($api.dom('.right'), 'width:90px');
+          $api.html($api.dom('.right'),right.text);
+          $api.addEvt($api.dom('.right'), 'click', function(){
+            api.sendEvent({
+                name: right.eventName,
+                extra: { }
+            });
+          })
+        }
+    }
+    function closeWin() {
+    var left 	= ("left" in extra) && extra['left'] ? extra['left'] : false;
+    if (left) {
+        api.sendEvent({
+            name : left['eventName']
+        });
+    }
+    api.closeWin();
+}
+</script>
+</html>

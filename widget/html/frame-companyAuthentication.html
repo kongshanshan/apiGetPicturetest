@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>开通企业版</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/lib/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/companyAuthentication.css"/>
+  </head>
+  <body>
+    <!-- 主内容结构 -->
+    <section id="main-con" class="company_authentication">
+      <div class="img_list">
+        <div class="img_list-caption">上传营业执照与开户许可证</div>
+        <div class="img_wrap flex-wrap aui-margin-t-5">
+          <div class="yyzz aui-padded-r-5" onclick="getPicture()">
+            <img src="../image/yezz.png" alt="">
+          </div>
+          <div class="khxkz aui-padded-l-5" onclick="getPicture()">
+            <img src="../image/khxkz.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="img_list">
+        <div class="img_list-caption">上传门头照</div>
+        <div class="img_wrap flex-wrap aui-margin-t-5">
+          <div class="doorHead aui-padded-l-5" onclick="getPicture()">
+            <img src="../image/mtz.png" alt="">
+          </div>
+        </div>
+      </div>
+            <div class="aui-form">
+                <form action="">
+                    <ul class="aui-list aui-form-list aui-margin-t-10">
+                      <li class="aui-list-item flex-wrap">
+                          <div class="aui-list-item-inner">
+                              <div class="label">
+                                  商户全称
+                              </div>
+                              <div class="aui-list-item-input flex-con">
+                                  <input type="text" class="aui-item-input" placeholder="请输入商户全称">
+                              </div>
+                          </div>
+                      </li>
+
+                        <li class="aui-list-item flex-wrap">
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item_name">
+                                    营业执照编码
+                                </div>
+                                <div class="aui-list-item-input flex-con">
+                                    <input type="text" class="aui-item-input" placeholder="请输入营业执照编码">
+                                </div>
+                            </div>
+                        </li>
+                          <li class="aui-list-item flex-wrap">
+                              <div class="aui-list-item-inner">
+                                  <div class="aui-list-item_name">
+                                      公司经营地址
+                                  </div>
+                                  <div class="aui-list-item-input flex-con">
+                                      <input type="text" class="aui-item-input" placeholder="请输入公司经营地址">
+                                  </div>
+                              </div>
+                          </li>
+
+                    </ul>
+
+                    <div class="aui-btn aui-btn-block aui-btn-disabled" onclick="nextStep()">下一步</div>
+                    <!-- <div class="register-btn" tapmode="hover" onclick="confirm()">确定</div> -->
+                </form>
+            </div>
+    </section>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function getPicture(){
+
+        plumSelectPicture(function(path){
+          plumUploadImageType(path,'',imgRender)
+        })
+      }
+      function imgRender(src){
+        alert(src)
+        $api.attr($api.dom('.IDcard img'), 'src', src);
+      }
+      function nextStep(){
+        plumOpenCommonWin('IDcardAuthentication','企业版商户')
+      }
+  </script>
+  </html>

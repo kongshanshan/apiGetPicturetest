@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/lib/aui.css" />
+      <style>
+      #header{height: 50px;background: #fff;width: 100%;position: relative;box-sizing: content-box;}
+      .left{width: 60px;text-align: center;height: 50px;line-height: 50px;position: absolute;bottom: 0;left: 0;}
+      .right{padding-right:15px;color: #999;font-size: 12px;text-align: center;height: 50px;line-height: 50px;position: absolute;bottom: 0;right: 0;}
+      .left .aui-icon-left{font-weight: bolder;font-size:0.85rem;}
+      .title{text-align: center;height: 50px;line-height: 50px;font-size: 0.85rem;}
+      </style>
+  </head>
+  <body>
+
+    <div id="header">
+      <span id="nav-back" class="left" onclick="api.closeWin()" tapmode="hover">
+        <i class="aui-iconfont aui-icon-left"></i>
+      </span>
+    	<span id="right-item" class="right" tapmode="hover"></span>
+    	<div class="title"></div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.dom('#header');
+        //适配iOS 7+，Android 4.4+状态栏
+        $api.fixStatusBar(header);
+
+        api.setStatusBarStyle({
+                    style : 'dark',
+                    color:"#fff"
+                });
+        fnOpenFrame();
+      };
+      function fnOpenFrame(){
+        var headerH = $api.offset(header).h;
+        var title=api.pageParam['title'];
+        var text=api.pageParam['text'];
+        if(text){
+            $api.text($api.dom('.right'), text);
+            //退款页面绑定事件
+            if(api.pageParam['text']=="退款"){
+              $api.addEvt($api.dom('.right'), 'click', function(){
+                api.sendEvent({
+                    name: 'fnRefund',
+                    extra: { }
+                });
+
+              })
+            }
+        }
+        $api.text($api.dom('.title'), title);
+        api.openFrame({
+						name : 'frame-'+api.pageParam['path'],
+						url : './frame-'+api.pageParam['path']+'.html',
+              rect: {
+                  x: 0,
+                  y: headerH,
+                  w: api.winWidth,
+                  h: api.winHeight - headerH
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: false,
+              bgColor: 'rgba(0,0,0,0)',
+              vScrollBarEnabled: true,
+              hScrollBarEnabled: true
+          });
+      }
+  </script>
+  </html>

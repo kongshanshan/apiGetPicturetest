@@ -1,0 +1,16 @@
+html,body{background: #F8F3F7;}
+input::-webkit-input-placeholder{color:#aaa;}
+.aui-list{margin-top: 10px;}
+.aui-list .label{border: 0px;color: #333;font-size:0.65rem;line-height: 24px;}
+.aui-list .aui-list-item_name{font-size:0.65rem;width: 4.2rem;}
+.aui-list .aui-list-item{padding-right: 0px}
+.img_list{padding: 15px 15px 20px;background: #fff;margin: 10px 0 ;}
+.img_list-caption{font-size: 0.65rem;}
+.img_wrap .yyzz{ width:50%;}
+.img_wrap .khxkz{ width:50%;}
+.img_wrap .doorHead{ width:100%;}
+.aui-btn{margin-top: 10%;margin-bottom:10%;}
+.aui-item_select{color:#aaa;font-size: 0.75rem;}
+.aui-list-item-input{overflow:hidden;}
+.aui-list-item-input .aui-item-input{padding-right: 10px;}
+.modal_body{width:90%;}

@@ -1,0 +1,115 @@
+body,p,ul{margin: 0px;}
+ul{list-style: none;}
+body {
+	color: #333;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+	font: normal 14px/200% arial, helvetica, "Hiragino Sans GB", "Microsoft Yahei", "微软雅黑", sans-serif;
+	text-align: left;
+	background: #fff;
+}
+html,.body_bg{background: #F8F3F7;}
+img{width: 100%;height: auto;}
+/*去除input默认样式*/
+input[type="button"], input[type="submit"], input[type="reset"], textarea, input, button, select {
+	-webkit-appearance: none;
+	border: 0;
+	outline: none;
+}
+input[disabled]{color:#666666!important;opacity:1}
+/* flex布局 */
+.flex-wrap {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -ms-box;
+	display: box;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.flex-con {
+	-webkit-box-flex: 1;
+	-ms-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	box-flex: 1;
+	flex: 1;
+}
+.flex-vertical {
+	-webkit-box-orient: vertical;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	-webkit-flex-flow: column;
+	-flex-direction: column;
+	flex-flow: column;
+}
+.flex-start{
+	-webkit-justify-content: flex-start;
+	justify-content: flex-start;
+}
+/*单行溢出文字省略*/
+.ellipsis{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.nowrap{white-space: nowrap;}/*文字不折行*/
+/*多行文字溢出省略号*/
+.aui-list .multi_line{display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:2;overflow: hidden;}
+/*字体垂直居中*/
+.text-vertical{width:300px;height:100px;background: gold;}
+.text-vertical:after{content:'';display: inline-block; height:100%;width: 0;vertical-align: middle;}
+/*弹框*/
+.modal{position: fixed;z-index: 10000;width: 100%;top:0px;bottom: 0px;left: 0px;right: 0px;background: rgba(0,0,0,.6);display: none;}
+.modal_header{text-align: center;font-size: 16px;}
+.modal_body{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 80%;padding: 15px;background: #fff;border-radius: 5px;}
+.modal_body img{display:block;width: 100%;height:auto;}
+.modal_open{display: block;}
+.modal_body .icon-font{text-align: right;font-weight: bolder;color: #ff7b17;}
+/*label*/
+.aui-list .label{padding-right:10px;border-right:1px solid #FF7B17;color: #FF7B17;float: left; display: inline-block; width: 80px;
+  height:24px;line-height: 24px;font-size: 14px;text-align:justify;text-align-last:justify}
+.aui-list .label:after{ content: ""; display: inline-block;overflow: hidden;width: 100%;height: 0px;vertical-align: top;}
+.aui-list .aui-list-item{padding:0 15px;}
+.aui-list-item-input .aui-item-input{font-size:0.65rem;padding-left:10px;}
+/*按钮*/
+.aui-btn{	width: 85%;margin:15% auto 0;font-size:0.75rem;background:#ff7b17;padding: 10px;color: #fff;margin-top: 20%;height: auto;line-height: normal;}
+button,button[disabled]{background: transparent;}
+.aui-btn-disabled{background:#f39c5b;color: hsla(0,0%,100%,.6); }
+.aui-btn:active {	color: #fff;	background-color: #f37210;}
+.border-top,.border-bottom{position:relative ;}
+.border-top::before,.border-bottom:after{position: absolute;content:"";left: 0px;width: 100%;height: 0px;transform: scaleY(0.5);}
+.border-top::before{top: 0;border-top: 1px solid #bdbdbd;}
+.border-bottom::after{bottom: 0;border-bottom: 1px solid #bdbdbd;}
+/*点击没有背景色*/
+.aui-list .no_active:active {background-color: transparent;}
+.aui-list-item-inner .aui-list-item-right,.aui-list-item-inner .aui-list-item-title{font-size: 0.65rem;}
+.aui-dialog-body{font-size: 0.8rem;}
+.aui-dialog-btn{color: #ff7b17;}
+.aui-tab{position: fixed;top: 0;width: 100%;z-index: 1000;border-top:1px solid transparent; }
+/*.aui-tab::before{position: absolute;z-index: 1100;content:"";top:0px;left: 0px;width: 100%;height: 0px;border-bottom: 1px solid #bdbdbd;transform: scaleY(0.5);}*/
+.aui-tab-item.aui-active{color: #ff7b17;border-color: #ff7b17;background:#F8F3F7; }
+.aui-tab-item{font-size: 0.75rem;position:relative;}
+.aui-tab-item::before{position: absolute;content:"";bottom: 0;left: 0px;width: 100%;height: 0px;border-bottom: 1px solid #bdbdbd;transform: scaleY(0.5);}
+.aui-active.aui-tab-item::before{border-bottom: 0;}
+.tab-page{background: #F8F3F7;padding-top:2.2rem;}
+.loadResult{
+	margin:5px auto;
+	text-align:center;
+   font-size:13px;
+     color:#999999
+}
+.load {
+	overflow: hidden;
+}
+.load img {
+	width: 20px;
+}
+.load p {
+	font-size: 13px;
+	color: #c1c1c1;
+	margin-left: 5px;
+}
